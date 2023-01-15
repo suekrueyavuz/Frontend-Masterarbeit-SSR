@@ -1,0 +1,32 @@
+<div *ngIf="!quizEnd">
+    <div style="margin-top: 2rem; text-align: center;">
+        <h5>Question {{questionNumber+1}}</h5>
+        <img *ngIf="quiz" [src]="quiz[questionNumber].image"/><br>
+    </div>
+
+    <div *ngIf="quiz" style="width: 65%; margin: auto; margin-bottom: 2rem;">
+        <h5 style="text-align: center; margin-bottom: 1.5rem;">{{quiz[questionNumber].question}}</h5>
+        <ol>
+            <li class="answers" *ngFor="let answer of quiz[questionNumber].possibleAnswers">
+                <a (click)="onAnswerSelect(answer)" [ngStyle]="{'cursor': (!selectedAnswer) ? 'pointer': 'auto'}">
+                    <span>{{answer}}</span>
+                </a>
+            </li>
+        </ol>
+        <div *ngIf="selectedAnswer">
+            <div [ngStyle]="{'background-color': (correctAnswered()) ? 'green' : 'red', 'color': 'white'}">
+                <div *ngIf="correctAnswered(); else elseBlock">True</div>
+                <ng-template #elseBlock>Wrong</ng-template>
+            </div>
+            <br>
+            <button pButton style="float: right;" type="button" class="p-button-sm" (click)="loadNextQuestion()">{{questionNumber === 4 ? 'See Result' : 'Continue >'}}</button>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="quizEnd" class="card" style="width: 50%; margin: auto; margin-top: 2rem; text-align: center;">
+    <h5 style="color: orange; margin-bottom: 2rem;">Result</h5>
+    <h4 style="margin-bottom: 2rem;">You got {{numberOfCorrectAnswers}} out of 5</h4>
+    <button pButton type="button" (click)="reset()" class="p-button-warning" style="display: block;">Try again!</button>
+</div>

@@ -1,0 +1,33 @@
+<div style="display: flex; justify-content: center; margin-top: 2rem; margin-bottom: 2rem;">
+    <button pButton pRipple type="button" (click)="updateDate(-1)" icon="pi pi-angle-left" class="p-button-rounded p-button-text"></button>
+    <span style="margin-left: 1rem; margin-right: 1rem; margin-top: 0.7rem;">{{date}}</span>
+    <button pButton pRipple type="button" (click)="updateDate(+1)" icon="pi pi-angle-right" class="p-button-rounded p-button-text"></button>
+</div>
+<div class="card" style="margin: 0 2rem 2rem 2rem;">
+    <div class="margin">
+        <h5><mark>Breakfast</mark></h5>
+        <hr>
+        <app-autocomplete (totalCalorieChange)="updateNutrientsEvent()" 
+        [date]="date" [meal]="'BREAKFAST'" [selectedNahrungsmittelList]="entriesBreakfast"></app-autocomplete>
+    </div>
+    <div class="margin">
+        <h5><mark>Lunch</mark></h5>
+        <hr>
+        <app-autocomplete (totalCalorieChange)="updateNutrientsEvent()" 
+        [date]="date" [meal]="'LUNCH'" [selectedNahrungsmittelList]="entriesLunch"></app-autocomplete>
+    </div>
+    <div class="margin" style="margin-bottom: 2rem;">
+        <h5><mark>Dinner</mark></h5>
+        <hr>
+        <app-autocomplete (totalCalorieChange)="updateNutrientsEvent()" 
+        [date]="date" [meal]="'DINNER'" [selectedNahrungsmittelList]="entriesDinner"></app-autocomplete>
+    </div>
+</div>
+
+<div class="margin" style="margin-bottom: 3rem; text-align: center;" *ngIf="totalFat != 0 || totalCarbohydrate != 0 || totalProtein != 0">
+    <h5 style="background-color: rgb(216, 216, 216);">Total</h5>
+    <hr>
+    Your calorie count for the whole day is <b>{{totalCalorie}}</b> calories.
+    <br><br>
+    <p-chart type="pie" width="300" height="300" [data]="chartData"></p-chart>
+</div>

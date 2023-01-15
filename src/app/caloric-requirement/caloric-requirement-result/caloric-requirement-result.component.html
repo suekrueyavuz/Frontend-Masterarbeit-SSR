@@ -1,0 +1,28 @@
+<p-card header="Result">
+    <div class="row">
+        <div class="col" style="text-align: center;">
+            <h5>Slim down</h5>
+            <img class="img-responsive" src="assets/images/slim-down.png">
+            <br>
+            <span><b>Calorie requirement per day</b></span>
+            <h4>{{math.trunc(slimCaloricRequirement!)}} kcal</h4>
+            With the mentioned calorie range you will lose about 0.5 kg per week in a healthy way.
+        </div>
+        <div class="col" style="text-align: center;">
+            <h5>Keep</h5>
+            <img class="img-responsive" src="assets/images/keep.png">
+            <br>
+            <span><b>Calorie requirement per day</b></span>
+            <h4>{{math.trunc(caloricRequirement!)}} kcal</h4>
+            With the mentioned calorie range you will be able to maintain your current weight.
+        </div>
+        <div class="col" style="text-align: center;">
+            <h5>Gain</h5>
+            <img class="img-responsive" src="assets/images/gain.png">
+            <br>
+            <span><b>Calorie requirement per day</b></span>
+            <h4>{{math.trunc(gainCaloricRequirement!)}} kcal</h4>
+            With the mentioned calorie range you will gain about 0.5 kg per week.
+        </div>
+    </div>
+</p-card>

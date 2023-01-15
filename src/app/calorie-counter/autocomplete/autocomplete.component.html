@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-5">
+        <p-autoComplete [(ngModel)]="selectedNahrungsmittel" [suggestions]="nahrungsmittelSuggestions" (completeMethod)="autocomplete($event)" field="food_name">
+            <ng-template let-nahrungsmittel pTemplate="item">
+                <div class="row">
+                    <div class="col-2">
+                        <img [src]="nahrungsmittel.photo.thumb" width="30rem" [class]="'flag flag-' + nahrungsmittel.food_name.toLowerCase()" />
+                    </div>
+                    <div class="col-10">{{nahrungsmittel.food_name |titlecase}}</div>
+                </div>
+            </ng-template>
+        </p-autoComplete>
+        <button pButton label="Add" (click)="nahrungsmittelHinzufuegen()" class="p-button-sm" style="margin-left: 1rem;"></button>
+    </div>
+    <div class="col-7" *ngIf="selectedNahrungsmittelList.length !== 0">
+            <p-table [value]="selectedNahrungsmittelList" [tableStyle]="{'min-width': '40rem'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Name</th>
+                        <th>Calorie</th>
+                        <th>Carbohydrate</th>
+                        <th>Protein</th>
+                        <th>Fat</th>
+                        <th style="width: 5rem"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-nahrungsmittel>
+                    <tr>
+                        <td>{{nahrungsmittel.food_name |titlecase}}</td>
+                        <td>{{nahrungsmittel.calorie}}</td>
+                        <td>{{nahrungsmittel.carbohydrate}}</td>
+                        <td>{{nahrungsmittel.protein}}</td>
+                        <td>{{nahrungsmittel.fat}}</td>
+                        <td>
+                            <button pButton pRipple type="button" icon="pi pi-times" styleClass="p-button-sm"
+                            class="p-button-rounded p-button-danger p-button-outlined"
+                            (click)="nahrungsmittelLoeschen(nahrungsmittel)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div style="margin:auto; width: 70%; margin-top: 2rem;">
+    <p-card header="Caloric Requirement Calculator">
+        <div [formGroup]="form">
+            <div class="row">
+                <div class="col">
+                    Gender: 
+                </div>
+                <div class="col">
+                    <p-radioButton name="gender" formControlName="gender" value="Male" [style]="{'margin-right': '1rem'}"></p-radioButton>
+                    <label for="male">Male</label>
+                    <br>
+                    <p-radioButton name="gender" formControlName="gender" value="Female" [style]="{'margin-right': '1rem'}"></p-radioButton>
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="age">Age:</label>
+                </div>
+                <div class="col">
+                    <input type="text" pInputText id="age" formControlName="age" [pKeyFilter]="'int'"
+                    [ngClass]="{'border-danger': (submitted && form.controls['age'].errors?.['required'])}">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="weight">Body weight:</label>
+                </div>
+                <div class="col">
+                    <input type="text" pInputText formControlName="weight" [pKeyFilter]="'num'"
+                    [ngClass]="{'border-danger': (submitted && form.controls['weight'].errors?.['required'])}">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="height">Height:</label>
+                </div>
+                <div class="col">
+                    <input type="text" pInputText formControlName="height" [pKeyFilter]="'num'"
+                    [ngClass]="{'border-danger': (submitted && form.controls['height'].errors?.['required'])}">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="activityLevel">Physical activity level:</label>
+                </div>
+                <div class="col">
+                <p-dropdown [options]="activityLevels" formControlName="activityLevel" placeholder="Select activity level" optionLabel="activityLevel"
+                autoWidth="false" [ngClass]="{'border-danger': (submitted && form.controls['activityLevel'].errors?.['required'])}"></p-dropdown>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2rem;">
+                <div class="col"></div>
+                <div class="col">
+                    <p-button label="Calculate" (onClick)="getCaloricRequirements()"></p-button>
+                </div> 
+            </div>
+        </div>
+    </p-card>
+</div>
+<hr>
+<div *ngIf="caloricRequirement && form.valid" style="margin:auto; width: 70%; margin-top: 2rem;">
+    <app-caloric-requirement-result [caloricRequirement]="caloricRequirement"></app-caloric-requirement-result>
+</div>
+
+<div *ngIf="caloricRequirement && form.valid" style="margin:auto; width: 90%; margin-top: 2rem;">
+    <app-bmi-calculator [person]="person"></app-bmi-calculator>
+</div>
