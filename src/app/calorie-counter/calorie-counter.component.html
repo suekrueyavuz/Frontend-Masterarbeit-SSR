@@ -27,7 +27,7 @@
 <div class="margin" style="margin-bottom: 3rem; text-align: center;" *ngIf="totalFat != 0 || totalCarbohydrate != 0 || totalProtein != 0">
     <h5 style="background-color: rgb(216, 216, 216);">Total</h5>
     <hr>
-    Your calorie count for the whole day is <b>{{totalCalorie}}</b> calories.
+    Your calorie count for the whole day is <b>{{totalCalorie | number}}</b> calories.
     <br><br>
     <p-chart type="pie" width="300" height="300" [data]="chartData"></p-chart>
 </div>
