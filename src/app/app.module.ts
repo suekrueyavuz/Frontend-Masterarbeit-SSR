@@ -12,6 +12,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {CardModule} from 'primeng/card';
 import {DropdownModule} from 'primeng/dropdown';
 import {TabMenuModule} from 'primeng/tabmenu';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 import { AppComponent } from './app.component';
 import { CalorieCounterComponent } from './calorie-counter/calorie-counter.component';
@@ -52,7 +53,8 @@ import { BmiCalculatorComponent } from './caloric-requirement/bmi-calculator/bmi
     RadioButtonModule,
     CardModule,
     DropdownModule,
-    TabMenuModule
+    TabMenuModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ export class EntryService {
     return this.http.get<any>(this.BASE_URL + 'entry?date=' + date, this.getHeaders());
   }
 
-  addFood(food: Food, date: string, meal: string) {
+  addFood(food: Food, date: string, meal: string, amount: number) {
     const body = {
       food_name: food.food_name,
       calorie: food.calorie,
@@ -23,7 +23,7 @@ export class EntryService {
       protein: food.protein,
       fat: food.fat
     };
-    return this.http.post<any>(this.BASE_URL + 'entry?date=' + date + '&meal=' + meal, JSON.stringify(body), this.getHeaders());
+    return this.http.post<any>(this.BASE_URL + 'entry?amount=' + amount + '&date=' + date + '&meal=' + meal, JSON.stringify(body), this.getHeaders());
   }
 
   removeFood(foodName: string, date: string, meal: string) {

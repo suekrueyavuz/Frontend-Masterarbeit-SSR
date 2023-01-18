@@ -1,0 +1,4 @@
+:host ::ng-deep .amount {
+    width: 3rem;
+    margin-left: 1rem;
+}

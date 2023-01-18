@@ -10,6 +10,7 @@ import { CalorieService } from 'src/app/services/calorie.service';
 })
 export class AutocompleteComponent implements OnInit {
   selectedNahrungsmittel?:Food;
+  amount:number = 1;
   @Input() selectedNahrungsmittelList:Food[] = [];
   nahrungsmittelSuggestions:Food[] = [];
 
@@ -38,7 +39,7 @@ export class AutocompleteComponent implements OnInit {
           this.selectedNahrungsmittel.carbohydrate = data.foods[0].nf_total_carbohydrate;
           this.selectedNahrungsmittel.protein = data.foods[0].nf_protein;
           this.selectedNahrungsmittel.fat = data.foods[0].nf_total_fat;
-          this.entryService.addFood(this.selectedNahrungsmittel, this.date, this.meal).subscribe(() => {
+          this.entryService.addFood(this.selectedNahrungsmittel, this.date, this.meal, this.amount).subscribe(() => {
             if(this.selectedNahrungsmittel) {
               this.updateCalorieEvent(this.selectedNahrungsmittel.calorie);
             }
@@ -58,6 +59,7 @@ export class AutocompleteComponent implements OnInit {
     this.totalCalorie += foodCalorie;
     this.totalCalorieChange.emit();
     this.selectedNahrungsmittel = null!;
+    this.amount = 1;
   }
 
 }

@@ -10,6 +10,9 @@
                 </div>
             </ng-template>
         </p-autoComplete>
+        <p-inputNumber [(ngModel)]="amount" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="10"
+        inputStyleClass="amount">
+        </p-inputNumber>
         <button pButton label="Add" (click)="nahrungsmittelHinzufuegen()" class="p-button-sm" style="margin-left: 1rem;"></button>
     </div>
     <div class="col-7" *ngIf="selectedNahrungsmittelList.length !== 0">
